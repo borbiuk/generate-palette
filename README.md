@@ -1,2 +1,3 @@
 # generate-palette
-Generate palette from input color
+### `Generate collor palette by input color and step:`
+<img src="test.png" alt="test"/>

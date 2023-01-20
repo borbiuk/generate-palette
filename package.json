@@ -5,7 +5,7 @@
 	"description": "Generate palette from input color",
 	"main": "index.js",
 	"scripts": {
-		"test": "node index.js --color=#4287f5 --step=10"
+		"test": "node index.js --color '#ffdd00' --step '10'"
 	},
 	"repository": {
 		"type": "git",
