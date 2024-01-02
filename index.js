@@ -1,25 +1,72 @@
-// read and verify params
-const parameters = require('minimist')(require('process').argv.slice(2));
+#! /usr/bin/env node
 
-const color = parameters['c'] || parameters['color'];
-if (!color) {
-	throw 'ERROR: Parameter color (-c, --color) is required.';
+/*!
+ * generate-palette
+ * MIT Licensed
+ */
+
+'use strict'
+
+/**
+ * Module dependencies.
+ * @private
+ */
+const chroma = require('chroma-js');
+
+/**
+ * Module exports.
+ * @public
+ */
+module.exports = generatePalette;
+
+/**
+ * Get the color palette.
+ *
+ * @param {string} color
+ * @param {number} [step]
+ * @public
+ */
+function generatePalette (color, step = 10) {
+
+	if (!chroma.valid(color)) {
+		throw 'ERROR: Color should be present in hex format (#000000)';
+	}
+	if (step <= 0 || step >= 100) {
+		throw 'ERROR: Step should be between 0 and 100';
+	}
+
+	const colors = [color];
+	colors.unshift(
+		chroma.scale(['white', color])
+			.domain([0, 1])
+			.mode("lrgb")
+			.colors(50)[1]
+	);
+	colors.push(
+		chroma.scale(['black', color])
+			.domain([0, 1])
+			.mode("lrgb")
+			.colors(10)[1]
+	);
+
+	const domain = [
+		0,
+		...Object.entries({})
+			.filter(([key, value]) => value)
+			.map(([key]) => parseInt(key) / 100),
+		1
+	];
+
+	const scale = chroma.scale(colors)
+		.domain(domain)
+		.mode('lrgb');
+
+	let result = {
+		50: color
+	};
+	for (let i = step; i < 100; i += step) {
+		result[i] = scale(i / 100).hex();
+	}
+	return result;
 }
-const step = parameters['s'] || parameters['step'] || 10;
 
-// generate palette
-const generatePalette = require('./generate-palette');
-const result = generatePalette(color, step);
-
-// log result
-Object.keys(result)
-	.forEach(key => {
-		const hex = result[key].replace('#', '');
-
-		const red = parseInt(hex.substring(0, 2), 16);
-		const green = parseInt(hex.substring(2, 4), 16);
-		const blue = parseInt(hex.substring(4,6), 16);
-
-		const color = `\x1b[38;2;${red};${green};${blue}m`;
-		console.log(`${color} ${key}: \t${result[key]}`);
-	});

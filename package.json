@@ -1,11 +1,11 @@
 {
 	"name": "generate-palette",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"author": "Nazariy Borbiuk",
 	"description": "Generate palette from input color",
 	"main": "index.js",
 	"scripts": {
-		"test": "node index.js --color '#ffdd00' --step '10'"
+		"example": "node example.js --color '#ffdd00' --step '10'"
 	},
 	"repository": {
 		"type": "git",
