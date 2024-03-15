@@ -3,7 +3,7 @@
 Generate collor palette by input color and step:
 
 
-## Install
+## Installation
 
 This is a [Node.js](https://nodejs.org/en/) module available through the
 [npm registry](https://www.npmjs.com/). Installation is done using the
@@ -11,6 +11,11 @@ This is a [Node.js](https://nodejs.org/en/) module available through the
 
 ```sh
 $ npm install generate-palette
+```
+Or to install globally:
+
+```sh
+$ npm install -g generate-palette
 ```
 
 ### TypeScript
@@ -28,7 +33,7 @@ $ npm install @types/node
 ## API
 
 ```js
-var generatePalette = require('generate-palette')
+var generatePalette = require('generate-palette');
 ```
 
 ### generatePalette(color, [step])
@@ -37,7 +42,7 @@ var generatePalette = require('generate-palette')
 
 Parameters:
 - `color` - The domain color of palett in HEX format.
-- `step` - Ths step of concentraition in palette.
+- `step` - Ths step of concentration in palette.
   It should be between 0 and 100.
 
 
@@ -45,13 +50,19 @@ Parameters:
 
 ### Example of usage
 ```js
-var generatePalette = require('generate-palette')
+var generatePalette = require('generate-palette');
 
-var palette = generatePalette('#ffdd00', 10)
+var palette = generatePalette('#FFDD00', 10);
 ```
 <img src="palette.png" alt="palette" width="320px"/>
 
 ### Example of CLI usage
 ```sh
-node example.js --color '#87CEEB' --step '10'
+generate-palette --color '#87CEEB' --step '10'
+```
+
+Or in JSON format:
+
+```sh
+generate-palette --color '#FFDD00' --step '10' --json
 ```

@@ -1,11 +1,12 @@
 {
 	"name": "generate-palette",
-	"version": "1.0.2",
-	"author": "Nazariy Borbiuk",
+	"version": "1.0.4",
+	"author": "Nazarii Borbiuk",
 	"description": "Generate palette from input color",
 	"main": "index.js",
 	"scripts": {
-		"example": "node example.js --color '#ffdd00' --step '10'"
+		"example": "node example.js --color '#ffdd00' --step '10'",
+		"example:json": "node example.js --color '#0056B9' --step '10' --json"
 	},
 	"repository": {
 		"type": "git",
@@ -14,8 +15,8 @@
 	"license": "MIT",
 	"homepage": "https://github.com/borbiuk/generate-palette#readme",
 	"dependencies": {
-		"chroma-js": "^2.4.2",
-		"lodash": "^4.17.21",
-		"minimist": "^1.2.8"
+		"chroma-js": "2.4.2",
+		"lodash": "4.17.21",
+		"minimist": "1.2.8"
 	}
 }
