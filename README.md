@@ -1,68 +1,81 @@
 # generate-palette
 
-Generate collor palette by input color and step:
-
+Generate a color palette based on an input color and step value.
 
 ## Installation
 
-This is a [Node.js](https://nodejs.org/en/) module available through the
-[npm registry](https://www.npmjs.com/). Installation is done using the
-[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
+This package is available on [npm](https://www.npmjs.com/).
+
+### Install locally:
 
 ```sh
-$ npm install generate-palette
-```
-Or to install globally:
+npm install generate-palette
+```  
+
+### Install globally:
 
 ```sh
-$ npm install -g generate-palette
-```
+npm install -g generate-palette
+```  
 
-### TypeScript
+## TypeScript Support
 
-This module includes a [TypeScript](https://www.typescriptlang.org/)
-declaration file to enable auto complete in compatible editors and type
-information for TypeScript projects. This module depends on the Node.js
-types, so install `@types/node`:
+This package includes TypeScript type definitions for improved auto-completion and type safety.
+
+To ensure compatibility, install the Node.js type definitions:
 
 ```sh
-$ npm install @types/node
-```
+npm install @types/node
+```  
 
+## Usage
 
-## API
+### Importing the module
 
 ```js
-var generatePalette = require('generate-palette');
+const generatePalette = require('generate-palette');
 ```
 
-### generatePalette(color, [step])
+### API
 
-**Returns a object that contains color palette.**
+#### `generatePalette(color, step) → Object`
 
-Parameters:
-- `color` - The domain color of palett in HEX format.
-- `step` - Ths step of concentration in palette.
-  It should be between 0 and 100.
+Generates a color palette based on the given color and step value.
 
+##### Parameters:
+- **`color`** (string) – The base color in HEX format.
+- **`step`** (number, optional) – The intensity step for the palette, ranging from `0` to `100`.
+
+##### Returns:
+An object containing the generated color palette.
 
 ## Examples
 
-### Example of usage
+### Example: Generate a color palette in JavaScript
+
 ```js
-var generatePalette = require('generate-palette');
+const generatePalette = require('generate-palette');
 
-var palette = generatePalette('#FFDD00', 10);
-```
-<img src="palette.png" alt="palette" width="320px"/>
+const palette = generatePalette('#FFDD00', 10);
+console.log(palette);
+```  
 
-### Example of CLI usage
+<img src="palette.png" alt="Generated color palette" width="320px"/>  
+
+### Example: CLI Usage
+
+#### Generate a palette using the CLI
+
 ```sh
-generate-palette --color '#87CEEB' --step '10'
-```
+generate-palette --color '#87CEEB' --step 10
+```  
 
-Or in JSON format:
+#### Output results in JSON format
 
 ```sh
-generate-palette --color '#FFDD00' --step '10' --json
-```
+generate-palette --color '#FFDD00' --step 10 --json
+```  
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

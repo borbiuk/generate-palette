@@ -1,6 +1,6 @@
 {
 	"name": "generate-palette",
-	"version": "1.0.4",
+	"version": "2.0.0",
 	"author": "Nazarii Borbiuk",
 	"description": "Generate palette from input color",
 	"main": "index.js",
